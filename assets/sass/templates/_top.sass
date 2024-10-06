@@ -1,0 +1,32 @@
+.top
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    z-index: 10
+    padding: rem-calc(11 0 12)
+    background-color: $color-1
+    @media (max-width: 640px)
+        position: static
+        z-index: 1
+    &__text
+        font-size: rem-calc(16)
+        line-height: 1.41666666667
+        color: $color-2
+        text-align: center
+    &__important
+        display: none
+        @media (max-width: 640px)
+            display: block
+            margin-top: rem-calc(5)
+        &-text
+            font-size: rem-calc(16)
+            line-height: 1.41666666667
+            font-weight: 400
+            color: $color-2
+            text-align: center
+
+.body-wrapper
+    margin-top: rem-calc(40)
+    @media (max-width: 640px)
+        margin-top: unset

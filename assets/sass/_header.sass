@@ -1,0 +1,243 @@
+.header
+    position: relative
+
+    // padding: rem-calc(14 0)
+    @media (max-width: 640px)
+        position: fixed
+        top: 0
+        left: 0
+        width: 100%
+        background-color: white
+        padding: 0
+        display: flex
+        align-items: center
+        justify-content: center
+        height: rem-calc(70)
+        z-index: 1
+        &::before
+            content: ""
+            position: absolute
+            top: 0
+            left: 0
+            height: 100%
+            width: 100%
+            background-color: white
+            z-index: 3
+    &__container
+        // max-width: rem-calc(975)
+        position: relative
+        padding: rem-calc(16 15)
+        @media (max-width: 640px)
+            height: 100%
+            padding: 0
+        &-2
+            position: relative
+            z-index: 1
+            padding: unset
+            @media (max-width: 640px)
+                position: absolute
+                top: 0
+                left: 0
+                width: 100%
+                height: max-content
+                background-color: white
+                transition: all .3s ease 0s
+                z-index: 2
+    &__wrapper 
+        display: flex
+        align-items: center
+        justify-content: space-between
+        flex-direction: column
+        height: 100%
+
+        width: 100%
+        position: absolute
+        top: 0
+        left: 0
+        padding-top: rem-calc(14)
+    &__burger
+        display: none
+        @media (max-width: 640px)
+            display: flex
+            align-items: center
+            justify-content: center
+            width: rem-calc(35)
+            height: rem-calc(30)
+            cursor: pointer
+            position: relative
+            z-index: 4
+            &::after,
+            &::before
+                content: ""
+                position: absolute
+                left: 0
+                display: inline-block
+                width: 100%
+                height: rem-calc(3)
+                background-color: $color-1
+                transition: all .3s ease 0s
+            &::after
+                bottom: 0
+            &::before
+                top: 0
+            &.active::after
+                transform: rotate(45deg) translateY(65%)
+                bottom: 50%
+            &.active::before
+                top: 50%
+                transform: rotate(-45deg) translateY(-50%)
+            &.active span
+                opacity: 0
+                visibility: hidden
+            span
+                display: inline-block
+                width: 100%
+                height: rem-calc(3)
+                background-color: $color-1
+                transition: all .3s ease 0s
+    &__top
+        background-color: $color-2
+        padding: rem-calc(4 0)
+        @media (max-width: 640px)
+            display: flex
+            align-items: center
+            width: 100%
+            padding: rem-calc(0 15)
+    &__logo
+        max-width: rem-calc(211)
+        width: 100%
+        position: relative
+        z-index: 4
+        margin: 0 auto
+        @media (max-width: 640px)
+            margin: unset
+            max-width: rem-calc(170)
+        a
+            display: inline-block
+            width: 100%
+            img
+                max-width: rem-calc(211)
+                width: 100%
+                @media (max-width: 640px)
+                    max-height: rem-calc(60)
+                    max-width: rem-calc(170)
+                    height: 100%
+    &__overlay
+        position: fixed
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background-color: rgba(0, 0, 0, 0.5)
+        z-index: 1
+        opacity: 0
+        visibility: hidden
+        transition: all .3s ease 0s
+        &.active
+            visibility: visible
+            opacity: 1
+    &__menu
+        display: flex
+        align-items: center
+        width: 100%
+        justify-content: space-between
+        @media (max-width: 640px)
+            align-items: normal
+            flex-direction: column
+            position: absolute
+            top: -10000%
+            left: 0
+            width: 100%
+            height: max-content
+            background-color: $color-2
+            transition: all .3s ease 0s
+            z-index: 2
+            // overflow: scroll //if need scroll on mobile menu
+            // height: 70vh
+        &.active
+            top: rem-calc(70)
+            background-color: $color-1
+    &__items
+        display: flex
+        align-items: center
+        justify-content: space-between
+        @media (max-width: 640px)
+            flex-direction: column
+    &__item
+        @media (max-width: 640px)
+            width: 100%
+    &__link
+        display: inline-block
+        font-size: rem-calc(18)
+        padding: rem-calc(0 16)
+        color: $color-1
+        transition: all .3s ease 0s
+        &:hover
+            opacity: .5
+        @media (max-width: 640px)
+            color: $color-2
+            background-color: $color-1
+            width: 100%
+            padding: rem-calc(15)
+    &__box
+        display: flex
+        align-items: center
+        @media (max-width: 640px)
+            flex-direction: column
+            align-items: normal
+    &__important
+        margin-top: rem-calc(-7)
+        @media (max-width: 640px)
+            display: none
+        &-text
+            font-size: rem-calc(18)
+            line-height: 1.41666666667
+            font-weight: 400
+            color: $color-2
+    .search
+        display: flex
+        justify-content: flex-end
+        position: absolute
+        top: 50%
+        right: rem-calc(15)
+        transform: translateY(-50%)
+        z-index: 3
+        @media (max-width: 640px)
+            z-index: 4
+        input
+            font-size: rem-calc(18)
+            font-weight: 400
+            line-height: 1.2
+            color: transparent
+            width: rem-calc(24)
+            height: rem-calc(24)
+            background: url("../../assets/image/magnifying-glass.svg") center right/contain no-repeat $color-2
+            transition: all .3s ease 0s
+            &:focus
+                color: $color-1
+                width: rem-calc(200)
+                padding: rem-calc(5 24 5 5)
+                box-shadow: 0px 0px rem-calc(9) rgba(0, 0, 0, 0.2)
+                @media (max-width: 640px)
+                    width: 100%
+                    max-width: rem-calc(640)
+            &:focus ~ .autocomplete-items
+                opacity: 1
+                visibility: visible
+        .autocomplete-items
+            opacity: 0
+            visibility: hidden
+        //     &:focus ~ .autocomplete-items
+        //         opacity: 1
+        //         visibility: visible
+        // .autocomplete-items
+        //     opacity: 0
+        //     visibility: hidden
+
+.no-scroll 
+    overflow: hidden
+
+.body-wrapper
+    @media (max-width: 640px)
+        margin-top: rem-calc(70)
+

@@ -1,0 +1,20 @@
+@mixin respond($breakpoint)
+    @if $breakpoint == small
+        @media only screen and (max-width: 640px)
+            @content
+    
+    @if $breakpoint == medium
+        @media only screen and (max-width: 641px)
+            @content
+
+    @if $breakpoint == large
+        @media only screen and (max-width: 1024px)
+            @content
+    
+    @if $breakpoint == xlarge
+        @media only screen and (max-width: 1200px)
+            @content
+
+    @if $breakpoint == xxlarge
+        @media only screen and (max-width: 1440px)
+            @content

@@ -1,0 +1,67 @@
+.box
+    position: relative
+    &__axeptio
+        position: absolute
+        top: rem-calc(95)
+        left: rem-calc(15)
+        max-width: max-content
+        @media (max-width: 640px)
+            position: relative
+            top: rem-calc(5)
+            margin-bottom: rem-calc(-45)
+        &-text
+            font-size: rem-calc(14)
+            font-weight: 400
+            line-height: 1.2
+            color: $color-1
+        &-icon
+            max-width: rem-calc(48)
+            width: 100%
+            margin-top: rem-calc(3)
+            @media (max-width: 640px)
+                margin-top: unset
+    &__title
+        padding: rem-calc(156 0)
+        @media (max-width: 640px)
+            padding: rem-calc(50 0 40)
+    &__wrapper
+        padding: rem-calc(12 6 65)
+        @media (max-width: 640px)
+            padding-bottom: rem-calc(30)
+    &__items
+        display: flex
+        align-items: center
+        justify-content: space-between
+        gap: 0 rem-calc(12)
+        @media (max-width: 640px)
+            flex-wrap: wrap
+    &__item
+        width: 100%
+        transition: all .3s ease 0s
+        @media (max-width: 640px)
+            display: flex
+            align-items: center
+        &:hover img,
+        &:hover .box__subtitle-wrap
+            transform: scale(1.1)
+    &__img
+        width: 100%
+        overflow: hidden
+        @media (max-width: 640px)
+            max-width: rem-calc(450)
+        img
+            transition: all .3s ease 0s
+    &__subtitle
+        padding: rem-calc(24 15)
+        overflow: hidden
+        @media (max-width: 640px)
+            padding: rem-calc(10 15)
+            width: 100%
+        &-wrap
+            font-size: rem-calc(18)
+            font-weight: 400
+            line-height: 1.2
+            color: $color-1
+            text-align: center
+            text-transform: uppercase
+            transition: all .3s ease 0s

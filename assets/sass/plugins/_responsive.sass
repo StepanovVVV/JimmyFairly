@@ -1,0 +1,42 @@
+$base-font-size: 10px
+$width-container: 1450px
+
+@function rem-calc($values...)
+  $result: ()
+  @each $value in $values
+    @if type-of($value) == 'number'
+      $result: append($result, ($value / 10) * 1rem)
+    @else if type-of($value) == 'string' and str-index($value, 'px')
+      $value: str-slice($value, 1, -2) * 1
+      $result: append($result, ($value / 10) * 1rem)
+    @else if type-of($value) == 'list'
+      $converted-values: ()
+      @each $item in $value
+        @if type-of($item) == 'number'
+          $converted-values: append($converted-values, ($item / 10) * 1rem)
+        @else if type-of($item) == 'string' and str-index($item, 'px')
+          $item: str-slice($item, 1, -2) * 1
+          $converted-values: append($converted-values, ($item / 10) * 1rem)
+        @else
+          $converted-values: append($converted-values, $item)
+      $result: append($result, $converted-values)
+    @else
+      $result: append($result, $value) 
+  @return $result
+
+@mixin calculate-container-width($width, $viewport-width: 1920px)
+  max-width: ($width / $viewport-width) * 100%
+  @media (max-width: 1440px)
+    max-width: ($width / $viewport-width) * 110.345% 
+  @media (max-width: 1200px)
+    max-width: ($width / $viewport-width) * 123% 
+
+html
+  font-size: $base-font-size
+
+.grid-container
+  @include calculate-container-width($width-container)
+
+body.hidden 
+    opacity: 0
+    transition: opacity 0.5s ease
